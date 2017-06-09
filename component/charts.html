@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/packages/charts/classic/charts.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/packages/charts/classic/classic/resources/charts-all.css" rel="stylesheet" />
+
+   <script type="text/javascript">
+    Ext.onReady(function (){
+      Ext.create('Ext.chart.PolarChart', {
+        renderTo: Ext.getElementById('chart1'),
+        width: 600,
+        height: 300,
+        store: {
+          fields: ['name', 'g1'],
+          data: [
+            {"name": "Item-0", "g1": 57},
+            {"name": "Item-1", "g1": 45},
+            {"name": "Item-2", "g1": 67}
+          ]
+        },
+
+        //configure the legend
+        legend: {
+          docked: 'bottom'
+        },
+
+        //describe the actual pie series
+        series: [{
+          type: 'pie',
+          xField: 'g1',
+          label: {
+            field: 'name'
+          },
+          donut: 30 //increase or decrease
+        }]
+      });
+
+      Ext.create('Ext.chart.CartesianChart', {
+        renderTo: Ext.getElementById('chart2'),
+        width: 600,
+        height: 200,
+        store: {
+          fields: ['name', 'g1', 'g2'],
+          data: [
+            {"name": "Item-0", "g1": 57, "g2": 59},
+            {"name": "Item-1", "g1": 45, "g2": 50},
+            {"name": "Item-2", "g1": 67, "g2": 43},
+            {"name": "Item-3", "g1": 45, "g2": 18},
+            {"name": "Item-4", "g1": 30, "g2": 90}
+          ]
+        },
+
+        legend: {
+          docked: 'bottom'
+        },
+
+        //define x and y axis
+        axes: [{
+          type: 'numeric',
+          position: 'left'
+        },{
+          type: 'category',
+          visiableRange: [0, 1],
+          position: 'bottom'
+        }],
+
+        //define the actual series
+        series: [{
+          type: 'line',
+          xField: 'name',
+          yField: 'g1',
+          title: 'Normal'
+        }, {
+          type: 'line',
+          xField: 'name',
+          yField: 'g2',
+          title: 'Smooth'
+        }]
+      });
+
+      Ext.create('Ext.chart.CartesianChart', {
+        renderTo: Ext.getElementById('chart3'),
+        width: 600,
+        height: 200,
+        flipXY: true,
+        store: {
+          fields: ['name', 'g1', 'g2'],
+          data: [
+            {"name": "Item-0", "g1": 57, "g2": 59},
+            {"name": "Item-1", "g1": 45, "g2": 50},
+            {"name": "Item-2", "g1": 67, "g2": 43},
+            {"name": "Item-3", "g1": 45, "g2": 13},
+            {"name": "Item-4", "g1": 30, "g2": 90}
+          ]
+        },
+
+        legend: {
+          docked: 'bottom'
+        },
+
+        //x - y axis
+        axes: [{
+          type: 'numeric',
+          position: 'bottom',
+          grid: true,
+          minimum: 0
+        }, {
+          type: 'category',
+          position: 'left',
+        }],
+
+        // actual series
+        series: [{
+          type: 'bar',
+          xField: 'name',
+          yField: ['g1', 'g2'],
+          axis: 'left'
+        }]
+      });
+
+      Ext.create('Ext.chart.CartesianChart', {
+        renderTo: Ext.getElementById('chart4'),
+        width: 600,
+        height: 200,
+        store: {
+          fields: ['name', 'g1', 'g2'],
+          data: [
+            {"name": "Item-0", "g1": 57, "g2": 59},
+             {"name": "Item-1", "g1": 45, "g2": 50},
+             {"name": "Item-2", "g1": 67, "g2": 43},
+             {"name": "Item-3", "g1": 45, "g2": 18},
+             {"name": "Item-4", "g1": 30, "g2": 90}
+          ]
+        },
+        legend: {
+          docked: 'bottom',
+        },
+        axes: [{
+          type: 'numeric',
+          position: 'left',
+          grid: true
+        }, {
+          type: 'category',
+          position: 'bottom',
+          visiableRange: [0,5]
+        }],
+
+        series: [{
+          type: 'area',
+          xField: 'name',
+          yField: ['g1', 'g2'],
+          title: ['G1', 'G2']
+        }]
+      });
+    });
+   </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <br><p>Pie Chart</p>
+      <div id="chart1"></div>
+      <br><hr><p>Line Chart</p>
+      <div id="chart2"></div>
+      <br><hr><p>Bar Chart</p>
+      <div id="chart3"></div>
+      <br><hr><p>Area Chart</p>
+      <div id="chart4"></div>
+      <br><hr>
+    </div>
+  </body>
+</html>

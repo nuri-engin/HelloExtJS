@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+    <script type="text/javascript">
+      Ext.onReady(function () {
+        Ext.create('Ext.container.Container', {
+          renderTo: Ext.getBody(),
+          width: 600,
+          height: 200,
+          layout: {
+            type: 'table',
+            columns: 3,
+            tableAttrs: {
+              style: {
+                width: '100%'
+              }
+            }
+          },
+          items: [{
+            title: 'Panel 1',
+            html: 'First panel in colspan 2',
+            colspan: 2
+          }, {
+            title: 'Panel 2',
+            html: 'Second panel in rowspan 2',
+            rowspan: 2
+          }, {
+            title: 'Panel 3',
+            html: 'Third panel'
+          }, {
+            title: 'Panel 4',
+            html: 'Fourth Panel'
+          }, {
+            title: 'Panel 5',
+            html: 'Fifth panel'
+          }, {
+            title: 'Panel 6',
+            html: 'Sixth panel in colspan 3',
+            colspan: 3
+          }]
+        });
+      });
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

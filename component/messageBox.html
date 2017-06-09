@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+    <script type="text/javascript">
+      Ext.onReady(function () {
+        Ext.create('Ext.Button', {
+          renderTo: Ext.getElementById('msgBox1'),
+          text: 'Click Me',
+          listeners: {
+            click: function () {
+              Ext.Msg.alert('Title', 'Basic');
+            }
+          }
+        });
+
+        Ext.create('Ext.Button', {
+            renderTo: Ext.getElementById('msgBox2'),
+            text: 'Click Me',
+            listeners: {
+               click: function() {
+                  Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do this ?', callbackFunction);
+                  function callbackFunction(btn){
+                  if(btn == 'yes') {
+                     Ext.Msg.alert ('Button Click', 'You clicked the Yes button');
+                  } else {
+                     Ext.Msg.alert ('Button Click', 'You clicked the No button');
+                  }
+
+                  };
+               }
+
+            }
+         })
+
+         Ext.create('Ext.Button', {
+           renderTo: Ext.getElementById('msgBox3'),
+           text: 'Click me',
+           listeners: {
+             click: function () {
+               Ext.Msg.prompt('Name', 'Please enter your name:', function(btn, text) {
+                 if (btn = 'ok'){
+                   Ext.Msg.alert('Hello', 'Hello ' + text);
+                 }
+               });
+             }
+           }
+         })
+
+         Ext.create('Ext.Button', {
+           renderTo: Ext.getElementById('msgBox4'),
+           text: 'Click Me',
+           listeners: {
+             click: function () {
+               Ext.MessageBox.show({
+                 title: 'Details',
+                 msg: 'Please enter details',
+                 width: 300,
+                 buttons: Ext.MessageBox.OKCANCEL,
+                 multiline: true,
+                 fn: callbackFunction
+               });
+
+               function callbackFunction() {
+                Ext.Msg.alert('status', 'Details entered succesfully');
+               }
+             }
+           }
+         });
+
+         Ext.create('Ext.Button', {
+           renderTo: Ext.getElementById('msgBox5'),
+           text: 'Click me',
+           listeners: {
+             click: function () {
+               Ext.MessageBox.show({
+                 title: 'Details',
+                 msg: 'Please enter Details',
+                 width: 300,
+                 buttons: Ext.MessageBox.YESNOCANCEL,
+                 multiline: true,
+                 fn: callbackFunction
+               });
+
+               function callbackFunction() {
+                 Ext.Msg.alert('status', 'Details entered succesfully');
+               }
+             }
+           }
+         });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <br>
+      <p>Basic alert box</p>
+      <div id="msgBox1"></div>
+      <br><hr>
+      <p>Confirm box</p>
+      <div id="msgBox2"></div>
+      <br><hr>
+      <p>Prompt box</p>
+      <div id="msgBox3"></div>
+      <br><hr>
+      <p>Multiline Input box</p>
+      <div id="msgBox4"></div>
+      <br><hr>
+      <p>Yes-No-Cancel box</p>
+      <div id="msgBox5"></div>
+    </div>
+  </body>
+</html>

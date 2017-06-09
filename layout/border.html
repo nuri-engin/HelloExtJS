@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+    <script type="text/javascript">
+      Ext.onReady(function () {
+        Ext.create('Ext.panel.Panel', {
+          renderTo: Ext.getBody(),
+          height: 300,
+          width: 600,
+          layout: 'border',
+          defaults: {
+            collapsible: true,
+            split: true,
+            bodyStyle: 'padding 15px'
+          },
+          items: [{
+            title: 'Panel 1',
+            html: 'First Panel',
+            region: 'west'
+          }, {
+            title: 'Panel 2',
+            html: 'Second Panel',
+            region: 'center'
+          }, {
+            title: 'Panel 3',
+            html: 'Third Panel',
+            region: 'east'
+          }, {
+            title: 'Panel 4',
+            html: 'Fourth Panel',
+            region: 'south'
+          }, {
+            title: 'Panel 5',
+            html: 'Fifth Panel',
+            region: 'east'
+          }]
+        });
+      });
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+    <script type="text/javascript">
+      Ext.onReady(function () {
+        Ext.create('Ext.tab.Panel', {
+          renderTo: Ext.getBody(),
+          title: 'Tab Panel',
+          width: 500,
+          height: 200,
+          items: [{
+            xtype: 'panel',
+            title: 'Tab One',
+            html: 'The First Tab',
+            listeners: {
+              render: function () {
+                Ext.MessageBox.alert('Tab One', 'Tab One was clicked')
+              }
+            }
+          }, {
+            title: 'Tab Two',
+            html: 'The Second Tab',
+            listeners: {
+              render: function () {
+                Ext.MessageBox.alert('Tab Two', 'Tab Two was clicked')
+              }
+            }
+          }, {
+            title: 'Tab Three',
+            html: '<h1>Lorem</h1><br><p>ipsum bla bla bla bla</p>'
+          }]
+        });
+      });
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

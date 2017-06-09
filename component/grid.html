@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+    <script type="text/javascript">
+      // Data model
+      Ext.define('DataModel', {
+        extend: 'Ext.data.Model',
+        fields: [
+          {name: 'name', mapping: 'name'},
+          {name: 'city', mapping: 'city'},
+          {name: 'marks', mapping: 'marks'}
+        ]
+      });
+
+      Ext.onReady(function () {
+        //Store data
+        var myData = [
+          {name: "Nuri", city: "Hakkari", marks: "1"},
+          {name: "Siha", city: "Hatay", marks: "2"},
+          {name: "Ömer", city: "Bilecik", marks: "3"},
+          {name: "Eymen", city: "Van", marks: "4"},
+          {name: "Ayşe", city: "Ankara", marks: "5"},
+          {name: "Fatih", city: "Muğla", marks: "6"}
+        ];
+
+        //First grid store
+        var gridStore = Ext.create('Ext.data.Store', {
+          model: 'DataModel',
+          data: myData
+        });
+
+        //First grid
+        Ext.create('Ext.grid.Panel', {
+          id: 'gridId',
+          store: gridStore,
+          stripeRows: true,
+          title: 'Person Grid',
+          renderTo: 'gridDiv', //Define in <body> tag with ID
+          width: 600,
+          collapsible: true,
+          enableColumnMove: true,
+          enableColumnResize: true,
+          columns:
+          [{
+            header: "Name",
+            dataIndex: 'name',
+            id: 'name',
+            flex: 2,
+            sortable: true,
+            hideable: true
+          }, {
+            header: "City",
+            dataIndex: 'city',
+            id: 'city',
+            flex: 2,
+            sortable: true,
+            hideable: false
+          }, {
+            header: "Marks",
+            dataIndex: 'marks',
+            id: 'marks',
+            flex: 1,
+            sortable: true,
+            hideable: true
+          }, {
+            header: "PoN",
+            dataIndex: 'marks',
+            id: 'pon',
+            flex: 4,
+            sortable: true,
+            hideable: false,
+            renderer: function (value, metadata, record, rowIndex, colIndex, store) {
+              if (value >= 4) {
+                return "Pass";
+              } else {
+                return "Not Pass";
+              }
+            }
+          }]
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="gridDiv"></div>
+  </body>
+</html>
